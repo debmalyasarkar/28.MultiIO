@@ -1,0 +1,19 @@
+Steps to Execute the Program
+----------------------------
+1.Execute the mkpipe file to create two named pipes pone and ptwo.
+2.Execute the pselect file to let program wait on read() for both pipes.
+3.Execute the wrPipe1 from another terminal and see that its received in the
+  pselect and the read() call returns.
+4.Execute the wrPipe2 from another terminal and see that its received in the
+  pselect and the read() call returns.
+5.Now we want to generate a signal from another terminal and see if pselect 
+  is unblocked by it.
+  Open another terminal and run $ps -ax to find PID of pselect program.
+    Run $kill -2 <PID>       -->SIGINT
+    Run $kill -3 <PID>       -->SIGQUIT
+  To skip the hassle with finding PID and again typing it just use the
+  following variant:
+    Run $pkill -2 pselect    -->SIGINT
+    Run $pkill -3 pselect    -->SIGQUIT
+  In the pselect it goes to signal handler if signal is received successfully.
+  You can define any custom action based on that.

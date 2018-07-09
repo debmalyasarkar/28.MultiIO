@@ -1,0 +1,15 @@
+Steps to Execute the Program
+----------------------------
+1.Execute the mkpipe file to create two named pipes pone and ptwo.
+2.Execute the multiIOProblem file to let program wait on read() for both pipes.
+3.Execute the wrPipe1 from another terminal and see that its received in the
+  multiIOProblem and the read() call returns.
+  Now it blocks on the second read.
+4.Execute the wrPipe2 from another terminal and see that its received in the
+  multiIOProblem and the read() call returns.
+5.Now execute the multiIOProblem again.
+6.Execute wrPipe2 from another terminal, observe that the write is succesful but
+  the data is not received as the multiIOProblem is waiting on the first read().
+  This is a major problem which we want to overcome to achieve concurrency while
+  handling multiple IO streams.
+  A non-blocking mode is more suitable for most applications.

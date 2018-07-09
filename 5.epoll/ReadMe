@@ -1,0 +1,14 @@
+Steps to Execute the Program
+----------------------------
+1.Execute the mkpipe file to create two named pipes pone and ptwo.
+2.Execute the epoll program file to let program wait on read() for both pipes.
+3.Execute the wrPipe1 from another terminal and see that its received in the
+  epoll program and the read() call returns.
+4.Execute the epoll program file to let program wait on read() for both pipes.
+5.Execute the wrPipe2 from another terminal and see that its received in the
+  epoll program and the read() call returns.
+6.We see that here one read does not block for other.
+  Whichever comes is processed immediately.
+7.epoll exits automatically after timeout period if no event occurs.
+8.Read the epoll.pdf file for additional information.
+
